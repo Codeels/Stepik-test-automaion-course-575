@@ -55,7 +55,7 @@ class BasePage():
         return True
 
     def go_to_login_page(self):
-        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
         # return LoginPage(browser=self.browser, url=self.browser.current_url)
         # обработка окна с предупреждением (переключение на окно и нажатие на "принять")
@@ -72,5 +72,10 @@ class BasePage():
 
     def go_to_basket_page(self):
         self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
 
 
