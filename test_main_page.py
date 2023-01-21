@@ -1,8 +1,12 @@
+import time
+
+import selenium.webdriver.chrome.webdriver
 from selenium.webdriver.common.by import By
 from pages.main_page import MainPage
 from pages.base_page import BasePage
 from pages.login_page import LoginPage
-
+from pages.basket_page import BasketPage
+from pages.locators import BasePageLocators
 
 # link = "http://selenium1py.pythonanywhere.com/"
 
@@ -42,5 +46,17 @@ def test_should_be_registration_form(browser):
     page = LoginPage(browser, link)
     page.open()
     page.should_be_register_form()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    # это сделано для работы с новой страницей (страница корзины)
+    basket = BasketPage(browser, browser.current_url)
+    basket.should_not_be_products_in_basket()
+    basket.should_be_empty_basket()
+
 
 
