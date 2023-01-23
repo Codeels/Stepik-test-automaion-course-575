@@ -1,7 +1,5 @@
 from .base_page import BasePage
 from .locators import BasketPageLocators
-import time
-import pytest
 
 
 class BasketPage(BasePage):

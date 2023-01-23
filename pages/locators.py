@@ -34,7 +34,6 @@ class BasePageLocators():
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
-
 class BasketPageLocators():
     ITEM_IN_BASKET = (By.CSS_SELECTOR, "h2.h3")
     # для проверки негативного сценария
